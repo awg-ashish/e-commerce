@@ -34,7 +34,7 @@ const Header = () => {
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             <Link to="/">
-              <div className="flex flex-shrink-0 items-center border border-amz-gray-dark hover:border-white h-full mx-2 p-2 h-full">
+              <div className="flex flex-shrink-0 items-center border border-amz-gray-dark hover:border-white mx-2 p-2 h-full">
                 <Logo className="scale-[80%]" />
                 <span className="text-white rounded-md px-1 py-2 text-sm font-medium">
                   Amazon
@@ -70,7 +70,7 @@ const Header = () => {
                 placeholder="Search..."
                 className="rounded focus:outline-none w-full text-gray-700 text-sm px-1"
               />
-              <span className="p-1 bg-amz-orange">
+              <span className="p-1 bg-amz-orange rounded-e">
                 <SearchIcon />
               </span>
             </div>
@@ -119,7 +119,16 @@ const Header = () => {
                       </p>
                     </Link>
                     <hr className="my-4" />
-
+                    {userInfo?.isAdmin && (
+                      <>
+                        <Link to="/admin">
+                          <p className="text-sm hover:cursor-pointer hover:underline hover:text-red-800">
+                            Admin Dashboard
+                          </p>
+                        </Link>
+                        <hr className="my-4" />
+                      </>
+                    )}
                     <p
                       className="text-sm hover:cursor-pointer hover:underline hover:text-red-800"
                       onClick={logoutHandler}

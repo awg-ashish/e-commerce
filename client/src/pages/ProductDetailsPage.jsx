@@ -13,7 +13,7 @@ const ProductDetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems, shippingAddress } = useSelector((state) => state.cart);
   const {
     data: product,
     isLoading,
@@ -47,11 +47,13 @@ const ProductDetailsPage = () => {
       ) : (
         <>
           <div className="max-w-7xl mx-auto">
-            <Link to="/">
-              <p className="border mx-[2.5vw] p-2 mt-4 w-min hover:bg-gray-100">
-                <ChevronLeftIcon />
-              </p>
-            </Link>
+            <p
+              className="border mx-[2.5vw] p-2 mt-4 w-min hover:bg-gray-100 cursor-pointer rounded"
+              onClick={() => navigate(-1)}
+            >
+              <ChevronLeftIcon />
+            </p>
+
             <div className="flex max-w-7xl mx-auto m-1 mt-8">
               <div className="w-[30vw] mx-[2.5vw]">
                 <img src={product.image} alt="" />
@@ -83,10 +85,13 @@ const ProductDetailsPage = () => {
                 <p>Delivery by Monday 17, July</p>
                 <p className="my-4">
                   <span>
-                    <LocationOnIcon className="scale-75" />
+                    <LocationOnIcon className="scale-75" /> Delivering To:
                   </span>
-
-                  <span>Deliver to this location</span>
+                  <br />
+                  <span className="text-sm">
+                    {shippingAddress.state}, {shippingAddress.country},<br />{" "}
+                    PIN - {shippingAddress.pinCode}
+                  </span>
                 </p>
                 {product.countInStock > 0 ? (
                   <p className="text-green-700 my-2">In stock</p>

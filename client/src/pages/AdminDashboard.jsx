@@ -11,12 +11,12 @@ const AdminDashboard = () => {
           All Orders
         </p>
       </Link>
-      <Link to="/admin/orders">
+      <Link to="/admin/products">
         <p className="text-sm hover:cursor-pointer hover:underline hover:text-red-800">
           All Products
         </p>
       </Link>
-      <Link to="/admin/orders">
+      <Link to="/admin/users">
         <p className="text-sm hover:cursor-pointer hover:underline hover:text-red-800">
           All Users
         </p>
